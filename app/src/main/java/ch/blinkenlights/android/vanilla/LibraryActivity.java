@@ -135,9 +135,9 @@ public class LibraryActivity
 	 */
 	private int mDefaultAction;
 	/**
-	 * The action to execute when a track is tapped (false = play, true = enqueue). Ignored if default action is not ACTION_EXPAND.
+	 * The action to execute when a track is tapped. Ignored if default action is not ACTION_EXPAND.
 	 */
-	private boolean mEnableEnqueueAsDefault;
+	private int mDefaultTrackAction;
 	/**
 	 * The last used action from the menu. Used with ACTION_LAST_USED.
 	 */
@@ -216,7 +216,7 @@ public class LibraryActivity
 
 		SharedPreferences settings = PlaybackService.getSettings(this);
 		mDefaultAction = Integer.parseInt(settings.getString(PrefKeys.DEFAULT_ACTION_INT, PrefDefaults.DEFAULT_ACTION_INT));
-		mEnableEnqueueAsDefault = settings.getBoolean(PrefKeys.ENABLE_ENQUEUE_AS_DEFAULT, PrefDefaults.ENABLE_ENQUEUE_AS_DEFAULT);
+		mDefaultTrackAction = Integer.parseInt(settings.getString(PrefKeys.DEFAULT_TRACK_ACTION, PrefDefaults.DEFAULT_TRACK_ACTION));
 		updateHeaders();
 	}
 
@@ -465,17 +465,10 @@ public class LibraryActivity
 			onItemExpanded(rowData);
 		} else if (action != ACTION_DO_NOTHING) {
 			if (action == ACTION_EXPAND) {
-
-				if(mEnableEnqueueAsDefault) {
-					// enqueue when trying to expand something that can't
-					// be expanded
-					action = ACTION_ENQUEUE;
-				}
-				else {
-					// play when trying to expand something that can't
-					// be expanded
-					action = ACTION_PLAY;
-				}
+				if (mDefaultTrackAction == ACTION_PLAY_OR_ENQUEUE)
+					action = (mState & PlaybackService.FLAG_PLAYING) == 0 ? ACTION_PLAY : ACTION_ENQUEUE;
+				else
+					action = mDefaultTrackAction;
 			} else if (action == ACTION_EXPAND_OR_PLAY_ALL) {
 				action = ACTION_PLAY_ALL;
 			} else if (action == ACTION_PLAY_OR_ENQUEUE) {

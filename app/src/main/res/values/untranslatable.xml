@@ -127,6 +127,29 @@ THE SOFTWARE.
 	</string-array>
 	<!-- END default action entries definition -->
 
+	<!-- START default action entries definition -->
+	<string-array name="default_track_action_entries">
+		<item>@string/play</item>
+		<item>@string/enqueue</item>
+		<item>@string/last_used_action</item>
+		<item>@string/play_all</item>
+		<item>@string/enqueue_all</item>
+		<item>@string/play_or_enqueue</item>
+		<item>@string/enqueue_as_next</item>
+		<item>@string/do_nothing</item>
+	</string-array>
+	<string-array name="default_track_action_entry_values">
+		<item>0</item> <!-- play               -->
+		<item>1</item> <!-- enqueue            -->
+		<item>2</item> <!-- last_action_used   -->
+		<item>3</item> <!-- play_all           -->
+		<item>4</item> <!-- enqueue_all        -->
+		<item>7</item> <!-- play_or_enqueue    -->
+		<item>8</item> <!-- enqueue_as_next    -->
+		<item>5</item> <!-- do_nothing         -->
+	</string-array>
+	<!-- END default action entries definition -->
+
 	<!-- START playlist sync mode entries definition -->
 	<string-array name="playlist_sync_mode_entries">
 		<item>@string/playlist_sync_disabled</item>

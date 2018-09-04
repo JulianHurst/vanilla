@@ -30,6 +30,7 @@ public class PrefDefaults {
 	public static final Action  COVER_PRESS_ACTION = Action.ToggleControls;
 	public static final String  DEFAULT_ACTION_INT = "9";
 	public static final String  DEFAULT_PLAYLIST_ACTION = "0";
+	public static final String  DEFAULT_TRACK_ACTION = "0";
 	public static final boolean COVERLOADER_ANDROID = true;
 	public static final boolean COVERLOADER_VANILLA = true;
 	public static final boolean COVERLOADER_SHADOW = true;
@@ -74,5 +75,4 @@ public class PrefDefaults {
 	public static final boolean KEEP_SCREEN_ON = false;
 	public static final String  PLAYLIST_SYNC_MODE = "0";
 	public static final String  PLAYLIST_SYNC_FOLDER = "/sdcard/Playlists";
-	public static final boolean ENABLE_ENQUEUE_AS_DEFAULT = false;
 }

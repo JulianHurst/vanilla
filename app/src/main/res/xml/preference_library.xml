@@ -42,11 +42,12 @@ THE SOFTWARE.
 		android:entries="@array/default_playlist_action_entries"
 		android:entryValues="@array/default_playlist_action_entry_values"
 		android:defaultValue="0" />
-	<CheckBoxPreference
-		android:key="enable_enqueue_as_default"
-		android:title="@string/enable_enqueue_as_default"
-		android:summary="@string/enable_enqueue_as_default_summary"
-		android:defaultValue="false" />
+	<ch.blinkenlights.android.vanilla.ListPreferenceSummary
+		android:key="default_track_action"
+		android:title="@string/default_track_action_title"
+		android:entries="@array/default_track_action_entries"
+		android:entryValues="@array/default_track_action_entry_values"
+		android:defaultValue="0" />
 	<CheckBoxPreference
 		android:key="enable_scroll_to_song"
 		android:title="@string/enable_scroll_to_song_title"

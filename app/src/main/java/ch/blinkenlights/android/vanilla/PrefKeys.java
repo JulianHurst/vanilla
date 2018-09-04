@@ -31,6 +31,7 @@ public class PrefKeys {
 	public static final String COVER_PRESS_ACTION = "cover_press_action";
 	public static final String DEFAULT_ACTION_INT = "default_action_int";
 	public static final String DEFAULT_PLAYLIST_ACTION = "default_playlist_action";
+	public static final String DEFAULT_TRACK_ACTION = "default_track_action";
 	public static final String COVERLOADER_ANDROID = "coverloader_android";
 	public static final String COVERLOADER_VANILLA = "coverloader_vanilla";
 	public static final String COVERLOADER_SHADOW = "coverloader_shadow";
@@ -75,5 +76,4 @@ public class PrefKeys {
 	public static final String KEEP_SCREEN_ON = "keep_screen_on";
 	public static final String PLAYLIST_SYNC_MODE = "playlist_sync_mode";
 	public static final String PLAYLIST_SYNC_FOLDER = "playlist_sync_folder";
-	public static final String ENABLE_ENQUEUE_AS_DEFAULT = "enable_enqueue_as_default";
 }
