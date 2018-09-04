@@ -43,6 +43,11 @@ THE SOFTWARE.
 		android:entryValues="@array/default_playlist_action_entry_values"
 		android:defaultValue="0" />
 	<CheckBoxPreference
+		android:key="enable_enqueue_as_default"
+		android:title="@string/enable_enqueue_as_default"
+		android:summary="@string/enable_enqueue_as_default_summary"
+		android:defaultValue="false" />
+	<CheckBoxPreference
 		android:key="enable_scroll_to_song"
 		android:title="@string/enable_scroll_to_song_title"
 		android:summary="@string/enable_scroll_to_song_summary"
