@@ -213,6 +213,13 @@ public class LibraryActivity
 		SharedPreferences settings = PlaybackService.getSettings(this);
 		mDefaultAction = Integer.parseInt(settings.getString(PrefKeys.DEFAULT_ACTION_INT, PrefDefaults.DEFAULT_ACTION_INT));
 		mDefaultTrackAction = Integer.parseInt(settings.getString(PrefKeys.DEFAULT_TRACK_ACTION, PrefDefaults.DEFAULT_TRACK_ACTION));
+		if (mDefaultAction > 8) {
+			mDefaultAction = ACTION_EXPAND;
+			mDefaultTrackAction = ACTION_PLAY_ALL;
+			settings.edit().putInt("default_action_int", ACTION_EXPAND);
+			settings.edit().putInt("default_track_action", ACTION_PLAY_ALL);
+
+		}
 		updateHeaders();
 	}
 
