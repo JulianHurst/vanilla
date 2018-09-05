@@ -112,10 +112,6 @@ public class LibraryActivity
 	 */
 	public static final int ACTION_ENQUEUE_AS_NEXT = 8;
 	/**
-	 * Action for row click: expand or play all.
-	 */
-	public static final int ACTION_EXPAND_OR_PLAY_ALL = 9;
-	/**
 	 * The SongTimeline add song modes corresponding to each relevant action.
 	 */
 	private static final int[] modeForAction =
@@ -413,7 +409,7 @@ public class LibraryActivity
 		query.mode = modeForAction[effectiveAction];
 		PlaybackService.get(this).addSongs(query);
 
-		if (mDefaultAction == ACTION_LAST_USED && mLastAction != action) {
+		if ((mDefaultAction == ACTION_LAST_USED || mDefaultTrackAction == ACTION_LAST_USED) && mLastAction != action) {
 			mLastAction = action;
 			updateHeaders();
 		}
@@ -466,12 +462,23 @@ public class LibraryActivity
 			onItemExpanded(rowData);
 		} else if (!isExpandable) {
 			//Use default track action if the item is not expandable.
-			if (mDefaultTrackAction == ACTION_DO_NOTHING)
+			if (mDefaultTrackAction == ACTION_LAST_USED) {
+				Toast.makeText(this, "" + mLastAction, Toast.LENGTH_SHORT).show();
+				if (mLastAction == ACTION_EXPAND) {
+					// Default to "Play" if default track action
+					// is "Last used action" and last action was "Expand"
+					action = ACTION_PLAY;
+				}
+				else {
+					action = mLastAction;
+				}
+			}else if (mDefaultTrackAction == ACTION_DO_NOTHING) {
 				return;
-			else if (mDefaultTrackAction == ACTION_PLAY_OR_ENQUEUE)
+			} else if (mDefaultTrackAction == ACTION_PLAY_OR_ENQUEUE) {
 				action = (mState & PlaybackService.FLAG_PLAYING) == 0 ? ACTION_PLAY : ACTION_ENQUEUE;
-			else
+			} else {
 				action = mDefaultTrackAction;
+			}
 			pickSongs(rowData, action);
 		} else if (action != ACTION_DO_NOTHING) {
 			if (action == ACTION_PLAY_OR_ENQUEUE) {
