@@ -102,7 +102,6 @@ THE SOFTWARE.
 
 	<!-- START default action entries definition -->
 	<string-array name="default_action_entries">
-		<item>@string/expand_or_play_all</item>
 		<item>@string/expand</item>
 		<item>@string/play</item>
 		<item>@string/enqueue</item>
@@ -114,7 +113,6 @@ THE SOFTWARE.
 		<item>@string/do_nothing</item>
 	</string-array>
 	<string-array name="default_action_entry_values">
-		<item>9</item> <!-- expand_or_play_all -->
 		<item>6</item> <!-- expand             -->
 		<item>0</item> <!-- play               -->
 		<item>1</item> <!-- enqueue            -->

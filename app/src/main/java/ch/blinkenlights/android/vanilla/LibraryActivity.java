@@ -460,18 +460,21 @@ public class LibraryActivity
 		if (action == ACTION_LAST_USED)
 			action = mLastAction;
 
-		boolean tryExpand = action == ACTION_EXPAND || action == ACTION_EXPAND_OR_PLAY_ALL;
-		if (tryExpand && rowData.getBooleanExtra(LibraryAdapter.DATA_EXPANDABLE, false)) {
+		boolean tryExpand = action == ACTION_EXPAND;
+		boolean isExpandable = rowData.getBooleanExtra(LibraryAdapter.DATA_EXPANDABLE, false);
+		if (tryExpand && isExpandable) {
 			onItemExpanded(rowData);
+		} else if (!isExpandable) {
+			//Use default track action if the item is not expandable.
+			if (mDefaultTrackAction == ACTION_DO_NOTHING)
+				return;
+			else if (mDefaultTrackAction == ACTION_PLAY_OR_ENQUEUE)
+				action = (mState & PlaybackService.FLAG_PLAYING) == 0 ? ACTION_PLAY : ACTION_ENQUEUE;
+			else
+				action = mDefaultTrackAction;
+			pickSongs(rowData, action);
 		} else if (action != ACTION_DO_NOTHING) {
-			if (action == ACTION_EXPAND) {
-				if (mDefaultTrackAction == ACTION_PLAY_OR_ENQUEUE)
-					action = (mState & PlaybackService.FLAG_PLAYING) == 0 ? ACTION_PLAY : ACTION_ENQUEUE;
-				else
-					action = mDefaultTrackAction;
-			} else if (action == ACTION_EXPAND_OR_PLAY_ALL) {
-				action = ACTION_PLAY_ALL;
-			} else if (action == ACTION_PLAY_OR_ENQUEUE) {
+			if (action == ACTION_PLAY_OR_ENQUEUE) {
 				action = (mState & PlaybackService.FLAG_PLAYING) == 0 ? ACTION_PLAY : ACTION_ENQUEUE;
 			}
 			pickSongs(rowData, action);
