@@ -131,7 +131,7 @@ public class LibraryActivity
 	 */
 	private int mDefaultAction;
 	/**
-	 * The action to execute when a track is tapped. Ignored if default action is not ACTION_EXPAND.
+	 * The action to execute when a track is tapped.
 	 */
 	private int mDefaultTrackAction;
 	/**
