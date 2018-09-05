@@ -463,7 +463,6 @@ public class LibraryActivity
 		} else if (!isExpandable) {
 			//Use default track action if the item is not expandable.
 			if (mDefaultTrackAction == ACTION_LAST_USED) {
-				Toast.makeText(this, "" + mLastAction, Toast.LENGTH_SHORT).show();
 				if (mLastAction == ACTION_EXPAND) {
 					// Default to "Play" if default track action
 					// is "Last used action" and last action was "Expand"
