@@ -218,6 +218,7 @@ public class LibraryActivity
 			mDefaultTrackAction = ACTION_PLAY_ALL;
 			settings.edit().putInt("default_action_int", ACTION_EXPAND);
 			settings.edit().putInt("default_track_action", ACTION_PLAY_ALL);
+			settings.edit().apply();
 
 		}
 		updateHeaders();
